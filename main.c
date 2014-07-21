@@ -39,6 +39,13 @@ int main(int argc ,char* argv[]){
 	}	
 
 	genorateRoomStatusSyncService(partnerName);
+	genorateOuterService(partnerName);
+	genorateService(partnerName);
+	genorateOrderSyncService(partnerName);
+	genoratePoiSyncJob(partnerName);
+
+	genorateServiceXml(partnerName);
+	genorateTaskXml(partnerName);
 
 	return 0;
 }

@@ -8,3 +8,5 @@ genorate.o: genorate.c genorate.h
 clean:
 	rm -f zlmaker
 	rm -f *.o
+install:
+	cp zlmaker /usr/local/bin/
