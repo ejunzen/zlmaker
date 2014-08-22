@@ -80,7 +80,7 @@ void genorateOuterService(char* partnerName){
 	fprintf(fd,"import java.util.List;\n");
 
 	partnerName[0] = partnerName[0] + 'A' -'a';
-	fprintf(fd,"public class %sOuterServiceImpl implements IZhilianPartnerOuterService,InitializingBean{\n");
+	fprintf(fd,"public class %sOuterServiceImpl implements IZhilianPartnerOuterService,InitializingBean{\n",partnerName);
 
 	fprintf(fd,"\t@Override\n\tpublic List<ExtPoiDO> getPoiFromRemote(PartnerEnum partnerEnum, ChannelEnum channelEnum) {\n\t\treturn null;\n\t}\n\n");
 	fprintf(fd,"\t@Override\n\tpublic List<ZhilianRoomStatusDO> getRemoteRoomStatus(ExtPoiDO extPoiDO, Date start, Date end) {\n\t\treturn null;\n\t}\n\n");
@@ -160,7 +160,7 @@ void genorateOrderSyncService(char* partnerName){
 	fprintf(fd,"import org.apache.commons.logging.LogFactory;\n");
 
 	partnerName[0] = partnerName[0] + 'A' -'a';
-	fprintf(fd,"public class %sServiceImpl extends AbstractZhilianPartnerOrderSyncService{\n\n",partnerName);
+	fprintf(fd,"public class %sOrderSyncServiceImpl extends AbstractZhilianPartnerOrderSyncService{\n\n",partnerName);
 
 	partnerName[0] = partnerName[0] + 'a' -'A';
 	fprintf(fd,"\tprivate final Log logger = LogFactory.getLog(LogConstants.%s_LOG);\n\n",partnerName);	
@@ -216,10 +216,10 @@ void genoratePoiSyncJob(char* partnerName){
 
 	fprintf(fd,"\tprivate IZhilianPartnerOuterService %sOuterService;\n\n",partnerName);
 	fprintf(fd,"\tprivate IZhilianPartnerService %sService;\n\n",partnerName);
-	fprintf(fd,"\t@Override\n\tprotected PartnerEnum getParterner() {\n\t\treturn PartnerEnum.%s;\n\t}\n\n",partnerName);
+	fprintf(fd,"\t@Override\n\tprotected PartnerEnum getPartnerEnum() {\n\t\treturn PartnerEnum.%s;\n\t}\n\n",partnerName);
 	fprintf(fd,"\t@Override\n\tprotected Log getLogger() {\n\t\treturn logger;\n\t}\n");
 	fprintf(fd,"\t@Override\n\tprotected ChannelEnum getChannelEnum() {\n\t\treturn ChannelEnum.%s;\n\t}\n\n",partnerName);
-	fprintf(fd,"\t@Override\n\tprotected IZhilianPartnerOuterService getOuterService() {\n\t\treturn %sOuterService;\n\t}\n\n",partnerName);
+	fprintf(fd,"\t@Override\n\tprotected IZhilianPartnerOuterService getPartnerOuterService() {\n\t\treturn %sOuterService;\n\t}\n\n",partnerName);
 	fprintf(fd,"\t@Override\n\tprotected IZhilianPartnerService getPartnerService() {\n\t\treturn %sService;\n\t}\n\n",partnerName);
 
 	partnerName[0] = partnerName[0] + 'A' -'a';
