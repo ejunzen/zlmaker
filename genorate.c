@@ -26,7 +26,7 @@ void genorateRoomStatusSyncService(char* partnerName){
 	partnerName[0] = partnerName[0] + 'A' -'a';
 	fprintf(fd,"public class %sRoomStatusSyncServiceImpl extends AbstractZhilianPartnerRoomStatusSyncService{\n\n",partnerName);
 	partnerName[0] = partnerName[0] + 'a' -'A';
-	fprintf(fd,"\tprivate final Log logger = LogFactory.getLog(LogConstants.%s_LOG);\n\n",partnerName);
+	fprintf(fd,"\tprivate final static Log logger = LogFactory.getLog(LogConstants.%s_LOG);\n\n",partnerName);
 	fprintf(fd,"\tExecutorService executorService = Executors.newFixedThreadPool(8);\n\n");
 	fprintf(fd,"\tprivate IZhilianPartnerOuterService %sOuterService;\n\n",partnerName);
 	fprintf(fd,"\tprivate IZhilianPartnerService %sService;\n\n",partnerName);
@@ -122,7 +122,7 @@ void genorateService(char* partnerName){
 	fprintf(fd,"public class %sServiceImpl extends AbstractZhilianPartnerService{\n\n",partnerName);
 
 	partnerName[0] = partnerName[0] + 'a' -'A';
-	fprintf(fd,"\tprivate final Log logger = LogFactory.getLog(LogConstants.%s_LOG);\n\n",partnerName);	
+	fprintf(fd,"\tprivate final static Log logger = LogFactory.getLog(LogConstants.%s_LOG);\n\n",partnerName);	
 
 	fprintf(fd,"\tprivate IZhilianPartnerOuterService %sOuterService;\n\n",partnerName);
 	fprintf(fd,"\t@Override\n\tprotected Log getLogger() {\n\t\treturn logger;\n\t}\n");
